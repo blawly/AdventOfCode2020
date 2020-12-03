@@ -1,16 +1,15 @@
 f = open("day3.txt")
 lines = []
 for line in f:
-    lines.append(line)
+    lines.append(line.rstrip('\n'))
 #Part One
 y = 0
 trees = 0
 for line in lines:
-    if line != '':
-        if line[y] == '#':
-            trees += 1
-        y += 3
-        y = y % (len(line) - 1)
+    if line[y] == '#':
+        trees += 1
+    y += 3
+    y = y % len(line)
 print(trees)
 #Part Two
 product = 1
@@ -19,10 +18,9 @@ for slope in slopes:
     y = 0
     trees = 0
     for line in lines[::slope[0]]:
-        if line != '':
-            if line[y] == '#':
-                trees += 1
-            y += slope[1]
-            y = y % (len(line) - 1)
+        if line[y] == '#':
+            trees += 1
+        y += slope[1]
+        y = y % len(line)
     product *= trees
 print(product)
