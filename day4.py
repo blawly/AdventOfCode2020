@@ -17,15 +17,7 @@ passportdicts = []
 for passport in passports:
     if all(key in passport for key in keys):
         #Fill list of passport dictionaries for part two; only the ones that contain the 7 required fields
-        passportdict = {
-            'byr': int(passport.split('byr:')[1].split(' ')[0]),
-            'iyr': int(passport.split('iyr:')[1].split(' ')[0]),
-            'eyr': int(passport.split('eyr:')[1].split(' ')[0]),
-            'hgt': passport.split('hgt:')[1].split(' ')[0],
-            'hcl': passport.split('hcl:')[1].split(' ')[0],
-            'ecl': passport.split('ecl:')[1].split(' ')[0],
-            'pid': passport.split('pid:')[1].split(' ')[0],
-        }
+        passportdict = dict((key, (passport.split('{}:'.format(key))[1].split(' ')[0])) for key in keys)
         passportdicts.append(passportdict)
         validOne += 1
 print(validOne)
@@ -34,9 +26,9 @@ validTwo = 0
 ecls = ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
 for passportdict in passportdicts:
     if (
-        passportdict['byr'] in range(1920, 2003) and
-        passportdict['iyr'] in range(2010, 2021) and
-        passportdict['eyr'] in range(2020, 2031) and
+        int(passportdict['byr']) in range(1920, 2003) and
+        int(passportdict['iyr']) in range(2010, 2021) and
+        int(passportdict['eyr']) in range(2020, 2031) and
         (
             (passportdict['hgt'][-2:] == 'cm' and int(passportdict['hgt'][:-2]) in range(150, 194)) or
             (passportdict['hgt'][-2:] == 'in' and int(passportdict['hgt'][:-2]) in range(59, 77))
