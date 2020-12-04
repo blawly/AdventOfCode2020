@@ -23,7 +23,6 @@ for passport in passports:
 print(validOne)
 #Part Two
 validTwo = 0
-ecls = ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
 for passportdict in passportdicts:
     if (
         int(passportdict['byr']) in range(1920, 2003) and
@@ -34,7 +33,7 @@ for passportdict in passportdicts:
             (passportdict['hgt'][-2:] == 'in' and int(passportdict['hgt'][:-2]) in range(59, 77))
         ) and
         re.fullmatch("#[0-9a-f]{6}", passportdict['hcl']) and
-        passportdict['ecl'] in ecls and
+        passportdict['ecl'] in ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'] and
         re.fullmatch("[0-9]{9}", passportdict['pid'])
     ):
         validTwo += 1
