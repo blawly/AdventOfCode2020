@@ -16,10 +16,10 @@ validOne = 0
 passportdicts = []
 for passport in passports:
     if all(key in passport for key in keys):
-        #Fill list of passport dictionaries for part two; only the ones that contain the 7 required fields
+        validOne += 1
+        #Fill list of passport dictionaries for part two; only the ones that contain the 7 required fields are relevant
         passportdict = dict((key, (passport.split('{}:'.format(key))[1].split(' ')[0])) for key in keys)
         passportdicts.append(passportdict)
-        validOne += 1
 print(validOne)
 #Part Two
 validTwo = 0
