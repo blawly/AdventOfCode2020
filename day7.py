@@ -8,18 +8,18 @@ for line in f:
             ruleDict[words[i + 1] + words[i + 2]] = int(words[i])
     rules[words[0] + words[1]] = ruleDict
 #Part One
-def canContain(color, rules):
+def canContain(color):
     for k, v in rules.items():
         if color in v:
             ableColors.add(k)
-            ableColors.union(canContain(k, rules))
+            ableColors.union(canContain(k))
     return ableColors
 ableColors = set()
-print(len(canContain("shinygold", rules)))
+print(len(canContain("shinygold")))
 #Part Two
-def bagsInside(color, rules):
+def bagsInside(color):
     bags = 0
     for k, v in rules[color].items():
-        bags += v + v * bagsInside(k, rules)
+        bags += v + v * bagsInside(k)
     return bags
-print(bagsInside("shinygold", rules))
+print(bagsInside("shinygold"))
