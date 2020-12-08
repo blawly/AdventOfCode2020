@@ -1,9 +1,9 @@
-f = open("day7.txt")
+f = open('day7.txt')
 rules = dict()
 for line in f:
     words = line.split()
     ruleDict = dict()
-    if words[4] != "no":
+    if words[4] != 'no':
         for i in range(4, len(words), 4):
             ruleDict[words[i + 1] + words[i + 2]] = int(words[i])
     rules[words[0] + words[1]] = ruleDict
@@ -15,11 +15,11 @@ def canContain(color):
             ableColors.union(canContain(k))
     return ableColors
 ableColors = set()
-print(len(canContain("shinygold")))
+print(len(canContain('shinygold')))
 #Part Two
 def bagsInside(color):
     bags = 0
     for k, v in rules[color].items():
         bags += v + v * bagsInside(k)
     return bags
-print(bagsInside("shinygold"))
+print(bagsInside('shinygold'))

@@ -1,4 +1,4 @@
-f = open('1input.txt')
+f = open('day1.txt')
 numbers = [0 for x in range(200)]
 for x in range(200):
     numbers[x] = int(f.readline())

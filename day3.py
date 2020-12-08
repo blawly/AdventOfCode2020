@@ -1,4 +1,4 @@
-f = open("day3.txt")
+f = open('day3.txt')
 lines = []
 for line in f:
     lines.append(line.rstrip('\n'))
