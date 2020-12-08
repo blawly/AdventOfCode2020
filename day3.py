@@ -2,7 +2,7 @@ f = open('input/day3.txt')
 lines = []
 for line in f:
     lines.append(line.rstrip('\n'))
-#Part One
+# Part One
 y = 0
 trees = 0
 for line in lines:
@@ -11,7 +11,7 @@ for line in lines:
     y += 3
     y = y % len(line)
 print(trees)
-#Part Two
+# Part Two
 product = 1
 slopes = [[1, 1], [1, 3], [1, 5], [1, 7], [2, 1]]
 for slope in slopes:

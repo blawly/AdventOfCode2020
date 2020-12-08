@@ -2,7 +2,7 @@ import re
 f = open('input/day4.txt')
 passports = []
 idx = 0
-#Read passports into list of single-line strings; each field is followed by ' '
+# Read passports into list of single-line strings; each field is followed by ' '
 for line in f:
     if line == '\n':
         idx += 1
@@ -10,18 +10,18 @@ for line in f:
         passports[idx] += line.rstrip('\n') + ' '
     else:
         passports.append(line.rstrip('\n') + ' ')
-#Part One
+# Part One
 keys = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid']
 validOne = 0
 passportdicts = []
 for passport in passports:
     if all(key in passport for key in keys):
         validOne += 1
-        #Fill list of passport dictionaries for part two; only the ones that contain the 7 required fields are relevant
+        # Fill list of passport dictionaries for part two; only the ones that contain the 7 required fields are relevant
         passportdict = dict((key, (passport.split('{}:'.format(key))[1].split(' ')[0])) for key in keys)
         passportdicts.append(passportdict)
 print(validOne)
-#Part Two
+# Part Two
 validTwo = 0
 for passportdict in passportdicts:
     if (
