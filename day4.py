@@ -1,5 +1,5 @@
 import re
-f = open('day4.txt')
+f = open('input/day4.txt')
 passports = []
 idx = 0
 #Read passports into list of single-line strings; each field is followed by ' '

@@ -1,4 +1,4 @@
-f = open('day8.txt')
+f = open('input/day8.txt')
 ops = []
 for line in f:
     ops.append(line.strip('\n').split())

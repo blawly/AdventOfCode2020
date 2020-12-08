@@ -1,4 +1,4 @@
-f = open('day5.txt')
+f = open('input/day5.txt')
 ids = []
 for line in f:
     pid = 0

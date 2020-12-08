@@ -1,4 +1,4 @@
-f = open('day6.txt')
+f = open('input/day6.txt')
 sumOne = 0
 sumTwo = 0
 for group in f.read().split('\n\n'):
