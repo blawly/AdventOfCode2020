@@ -10,7 +10,7 @@ def findLoop():
     while True:
         if ip in seq:
             return [acc, True] #also returns True if an infinite loop is found
-        if ip == len(ops):
+        elif ip == len(ops):
             return [acc, False] #and False if no such loop is present anymore (for part two)
         seq.append(ip)
         if ops[ip][0] == "jmp":
