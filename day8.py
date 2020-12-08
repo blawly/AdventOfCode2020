@@ -30,8 +30,7 @@ def findError():
             if not res[1]:
                 return res[0]
             else:
-                op[0] = "jmp"
-        
+                op[0] = "jmp"        
         if op[0] == "nop":
             op[0] = "jmp"
             res = findLoop()
