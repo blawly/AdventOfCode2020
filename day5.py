@@ -1,21 +1,22 @@
 f = open('input/day5.txt')
-ids = []
+sids = []
+#Decode lines as binary - where F, L = 0 and B, R = 1 - into seat ids
 for line in f:
-    pid = 0
+    sid = 0
     for char in line.rstrip('\n'):
-        pid *= 2
+        sid *= 2
         if char in ['B', 'R']:
-            pid += 1
-    ids.append(pid)
+            sid += 1
+    sids.append(sid)
 #Part One
 maxid = 0
-for pid in ids:
-    if pid > maxid:
-        maxid = pid
+for sid in sids:
+    if sid > maxid:
+        maxid = sid
 print(maxid)
 #Part Two
-for myid in range(1024):
-    if (myid not in ids and
-        myid - 1 in ids and
-        myid + 1 in ids):
-            print(myid)
+for mysid in range(1024):
+    if (mysid not in sids and
+        mysid - 1 in sids and
+        mysid + 1 in sids):
+            print(mysid)
