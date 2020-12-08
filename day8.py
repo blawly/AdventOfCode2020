@@ -15,10 +15,9 @@ def findLoop():
         seq.append(ip)
         if ops[ip][0] == "jmp":
             ip += int(ops[ip][1])
-        elif ops[ip][0] == "acc":
-            acc += int(ops[ip][1])
-            ip += 1
         else:
+            if ops[ip][0] == "acc":
+                acc += int(ops[ip][1])
             ip += 1
 print(findLoop()[0])
 #Part Two
