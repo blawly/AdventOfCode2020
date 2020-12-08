@@ -2,12 +2,13 @@ f = open('input/day2.txt')
 validOne = 0
 validTwo = 0
 for line in f:
+    #Split line into variables
     one = int(line.split('-')[0])
     two = int(line.split('-')[1].split(' ')[0])
     letter = line.split(' ')[1].split(':')[0]
     word = line.split(' ')[2]
-    count = word.count(letter)
     #Part One
+    count = word.count(letter)
     if count in range(one, two + 1):
         validOne += 1
     #Part Two
