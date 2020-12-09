@@ -20,22 +20,14 @@ def firstNonValid():
 partOne = firstNonValid()
 print(partOne)
 
-def contiguousSet(number):
-    for i in range(len(numbers)):
-        if numbers[i] < number:
-            sumOfSet = numbers[i]
-            smallest = numbers[i]
-            largest = numbers[i]
-            for j in range(i + 1, len(numbers)):
-                sumOfSet += numbers[j]
-                if numbers[j] < smallest:
-                    smallest = numbers[i]
-                elif numbers[j] > largest:
-                    largest = numbers[j]
-                if sumOfSet == number:
-                    return smallest + largest
-                elif sumOfSet > number:
-                    break
+def contiguousSet(inumber):
+    contSet = []
+    for number in numbers:
+        contSet.append(number)
+        while sum(contSet) > inumber:
+            contSet.pop(0)
+        if sum(contSet) == inumber:
+            return min(contSet) + max(contSet)
     return -1
 
 partTwo = contiguousSet(partOne)
