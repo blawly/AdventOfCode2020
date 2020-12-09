@@ -3,6 +3,7 @@ preambleN = 25
 with open('input/day9.txt') as f:
     for line in f:
         numbers.append(int(line))
+
 def valid(number, preamble):
     for i in range(preambleN):
         if preamble[i] < number:
@@ -10,12 +11,15 @@ def valid(number, preamble):
                 if preamble[i] + preamble[j] == number:
                     return True
     return False
+
 def firstNonValid():
     for i in range(preambleN, len(numbers)):
         if not valid(numbers[i], numbers[i - preambleN : i]):
             return numbers[i]
+
 partOne = firstNonValid()
 print(partOne)
+
 def contiguousSet(number):
     for i in range(len(numbers)):
         if numbers[i] < number:
@@ -33,5 +37,6 @@ def contiguousSet(number):
                 elif sumOfSet > number:
                     break
     return -1
+
 partTwo = contiguousSet(partOne)
 print(partTwo)
