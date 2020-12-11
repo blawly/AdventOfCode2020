@@ -96,20 +96,20 @@ with open('input/day11.txt') as f:
         row = list(line.rstrip('\n'))
         oriGrid.append(row)
 
-partOneGrid = copy.deepcopy(oriGrid)
+grid = copy.deepcopy(oriGrid)
 changed = 1
 while changed != 0:
-    lastchange = change(3, partOneGrid, 1)
-    partOneGrid = lastchange[0]
+    lastchange = change(3, grid, 1)
+    grid = lastchange[0]
     changed = lastchange[1]
 
-print(occupied(partOneGrid))
+print(occupied(grid))
 
-partTwoGrid = copy.deepcopy(oriGrid)
+grid = copy.deepcopy(oriGrid)
 changed = 1
 while changed != 0:
-    lastchange = change(4, partTwoGrid, 2)
-    partTwoGrid = lastchange[0]
+    lastchange = change(4, grid, 2)
+    grid = lastchange[0]
     changed = lastchange[1]
 
-print(occupied(partTwoGrid))
+print(occupied(grid))
