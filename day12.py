@@ -46,16 +46,16 @@ class Ship:
             self.waypoint[0] = 0 - waypoint[0]
             self.waypoint[1] = 0 - waypoint[1]
 
-    def instruct(self, instruction, part):
+    def instruct(self, instruction, partOne):
         if instruction[0] in 'NESW':
-            self.move(instruction[0], instruction[1], part == 1)
+            self.move(instruction[0], instruction[1], partOne)
         elif instruction[0] in 'LR':
-            if part == 1:
+            if partOne:
                 self.turn(instruction[0], instruction[1])
             else:
                 self.rotate(instruction[0], instruction[1])
         elif instruction[0] == 'F':
-            if part == 1:
+            if partOne:
                 self.move(self.heading, instruction[1], True)
             else:
                 self.moveToWp(instruction[1])
@@ -63,11 +63,11 @@ class Ship:
 # Part One
 ship = Ship([0, 0], [0, 0], 90)
 for instruction in instructions:
-    ship.instruct(instruction, 1)
+    ship.instruct(instruction, True)
 print(abs(ship.position[0]) + abs(ship.position[1]))
 
 # Part Two
 ship = Ship([0, 0], [10, 1], 0)
 for instruction in instructions:
-    ship.instruct(instruction, 2)
+    ship.instruct(instruction, False)
 print(abs(ship.position[0]) + abs(ship.position[1]))
