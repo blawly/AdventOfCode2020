@@ -1,15 +1,15 @@
 import re
-f = open('input/day4.txt')
-passports = []
-idx = 0
-# Read passports into list of single-line strings; each field is followed by ' '
-for line in f:
-    if line == '\n':
-        idx += 1
-    elif len(passports) > idx:
-        passports[idx] += line.rstrip('\n') + ' '
-    else:
-        passports.append(line.rstrip('\n') + ' ')
+with open('input/day4.txt') as f:
+    passports = []
+    idx = 0
+    for line in f:
+        if line == '\n':
+            idx += 1
+        elif len(passports) > idx:
+            passports[idx] += line.rstrip('\n') + ' '
+        else:
+            passports.append(line.rstrip('\n') + ' ')
+
 # Part One
 keys = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid']
 validOne = 0
@@ -21,6 +21,7 @@ for passport in passports:
         passportdict = dict((key, (passport.split('{}:'.format(key))[1].split(' ')[0])) for key in keys)
         passportdicts.append(passportdict)
 print(validOne)
+
 # Part Two
 validTwo = 0
 for passportdict in passportdicts:

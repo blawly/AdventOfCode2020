@@ -1,7 +1,8 @@
-f = open('input/day8.txt')
-ops = []
-for line in f:
-    ops.append(line.strip('\n').split())
+with open('input/day8.txt') as f:
+    ops = []
+    for line in f:
+        ops.append(line.strip('\n').split())
+
 # Part One
 def findLoop():
     ip = 0
@@ -9,9 +10,9 @@ def findLoop():
     seq = []
     while True:
         if ip in seq:
-            return [acc, True]  # also returns True if an infinite loop is found
+            return [acc, True]
         elif ip == len(ops):
-            return [acc, False]  # and False if no such loop is present anymore (for part two)
+            return [acc, False]
         seq.append(ip)
         if ops[ip][0] == 'jmp':
             ip += int(ops[ip][1])
@@ -20,6 +21,7 @@ def findLoop():
                 acc += int(ops[ip][1])
             ip += 1
 print(findLoop()[0])
+
 # Part Two
 def findError():
     for op in ops:

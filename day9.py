@@ -17,9 +17,6 @@ def firstNonValid():
         if not valid(numbers[i], numbers[i - preambleN : i]):
             return numbers[i]
 
-partOne = firstNonValid()
-print(partOne)
-
 def contiguousSet(inumber):
     contSet = []
     for number in numbers:
@@ -29,6 +26,9 @@ def contiguousSet(inumber):
         if sum(contSet) == inumber:
             return min(contSet) + max(contSet)
     return -1
+    
+partOne = firstNonValid()
+print(partOne)
 
 partTwo = contiguousSet(partOne)
 print(partTwo)

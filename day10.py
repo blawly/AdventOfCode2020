@@ -5,6 +5,7 @@ with open('input/day10.txt') as f:
 adapters.sort()
 adapters.append(max(adapters) + 3)
 
+# Part One
 last = adapters[0]
 oneJoltDiffs = 0
 threeJoltDiffs = 0
@@ -14,12 +15,11 @@ for adapter in adapters[1::]:
     elif adapter - last == 1:
         oneJoltDiffs += 1
     last = adapter
-partOne = oneJoltDiffs * threeJoltDiffs
-print(partOne)
+print(oneJoltDiffs * threeJoltDiffs)
 
+# Part Two
 arrangements = [0] * (max(adapters) + 1)
 arrangements[0] = 1
 for adapter in adapters[1:]:
     arrangements[adapter] = arrangements[adapter - 1] + arrangements[adapter - 2] + arrangements[adapter - 3]
-partTwo = arrangements[max(adapters)]
-print(partTwo)
+print(arrangements[max(adapters)])
