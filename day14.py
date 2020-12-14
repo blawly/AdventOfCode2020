@@ -1,14 +1,14 @@
-def writeOne(address, value, data):
-    binValue = f'{value:036b}'
+def writeOne(address, data, memory):
+    binData = f'{data:036b}'
     maskedData = ''
     for i in range(36):
         if mask[i] == 'X':
-            maskedData += binValue[i]
+            maskedData += binData[i]
         else:
             maskedData += mask[i]
-    data[address] = int(maskedData, 2)
+    memory[address] = int(maskedData, 2)
 
-def writeTwo(address, value, data):
+def writeTwo(address, data, memory):
     binAddress = f'{address:036b}'
     maskedAddress = ''
     for i in range(36):
@@ -18,7 +18,7 @@ def writeTwo(address, value, data):
             maskedAddress += mask[i]
     addresses = unmaskAddress(maskedAddress)
     for address in addresses:
-        data[address] = value
+        memory[address] = data
 
 def unmaskAddress(maskedAddress):
     floatCount = maskedAddress.count('X')
@@ -48,15 +48,15 @@ def unmaskHelper(floatCount):
             unmasks.remove(unmasks[0])
     return unmasks
 
-dataOne = dict()
-dataTwo = dict()
+memOne = dict()
+memTwo = dict()
 mask = ''
 with open('input/day14.txt') as f:
     for line in f:
         if line.split()[0] == 'mask':
             mask = line.split()[2].rstrip('\n')
         else:
-            writeOne(int(line.split('[')[1].split(']')[0]), int(line.split()[2]), dataOne)
-            writeTwo(int(line.split('[')[1].split(']')[0]), int(line.split()[2]), dataTwo)
-print(sum(dataOne.values()))
-print(sum(dataTwo.values()))
+            writeOne(int(line.split('[')[1].split(']')[0]), int(line.split()[2]), memOne)
+            writeTwo(int(line.split('[')[1].split(']')[0]), int(line.split()[2]), memTwo)
+print(sum(memOne.values()))
+print(sum(memTwo.values()))
