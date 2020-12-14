@@ -1,5 +1,3 @@
-f = open('input/day14.txt')
-
 def writeOne(address, value, data):
     binValue = f'{value:036b}'
     maskedData = ''
@@ -53,11 +51,12 @@ def unmaskHelper(floatCount):
 dataOne = dict()
 dataTwo = dict()
 mask = ''
-for line in f:
-    if line.split()[0] == 'mask':
-        mask = line.split()[2].rstrip('\n')
-    else:
-        writeOne(int(line.split('[')[1].split(']')[0]), int(line.split()[2]), dataOne)
-        writeTwo(int(line.split('[')[1].split(']')[0]), int(line.split()[2]), dataTwo)
+with open('input/day14.txt') as f:
+    for line in f:
+        if line.split()[0] == 'mask':
+            mask = line.split()[2].rstrip('\n')
+        else:
+            writeOne(int(line.split('[')[1].split(']')[0]), int(line.split()[2]), dataOne)
+            writeTwo(int(line.split('[')[1].split(']')[0]), int(line.split()[2]), dataTwo)
 print(sum(dataOne.values()))
 print(sum(dataTwo.values()))
