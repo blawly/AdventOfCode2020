@@ -18,7 +18,7 @@ def parenthesizePluses(expression):
                     depth += 1
                 elif expression[j] == '(':
                     depth -= 1
-                if expression[j] not in '+*' and depth == 0:
+                if depth == 0:
                     start = j
                     break
             for j in range(i + 1, len(expression)):
@@ -26,7 +26,7 @@ def parenthesizePluses(expression):
                     depth += 1
                 elif expression[j] == ')':
                     depth -= 1
-                if expression[j] not in '+*' and depth == 0:
+                if depth == 0:
                     end = j + 1
                     break
             expression = expression[: start] + '(' + expression[start : end] + ')' + expression[end :]
