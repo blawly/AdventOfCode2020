@@ -1,4 +1,4 @@
-f = open('input/day2.txt')
+f = open('input/day02.txt')
 
 validOne = 0
 validTwo = 0

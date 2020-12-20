@@ -1,4 +1,4 @@
-with open('input/day5.txt') as f:
+with open('input/day05.txt') as f:
     sids = []
     for line in f:
         sid = 0

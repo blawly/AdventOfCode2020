@@ -1,4 +1,4 @@
-f = open('input/day1.txt')
+f = open('input/day01.txt')
 
 numbers = [0 for x in range(200)]
 

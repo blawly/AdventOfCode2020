@@ -1,4 +1,4 @@
-with open('input/day7.txt') as f:
+with open('input/day07.txt') as f:
     rules = dict()
     for line in f:
         words = line.split()

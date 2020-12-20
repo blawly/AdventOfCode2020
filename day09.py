@@ -1,6 +1,6 @@
 numbers = []
 preambleN = 25
-with open('input/day9.txt') as f:
+with open('input/day09.txt') as f:
     for line in f:
         numbers.append(int(line))
 

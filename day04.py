@@ -1,5 +1,5 @@
 import re
-with open('input/day4.txt') as f:
+with open('input/day04.txt') as f:
     passports = []
     idx = 0
     for line in f:
